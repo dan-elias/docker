@@ -3,7 +3,7 @@
 
 .PHONY: build run xauth
 
-IMAGE_NAME = $(shell echo anaconda)
+IMAGE_NAME = $(shell basename `pwd`)
 IMAGE_VERSION = $(shell echo 0.0.0)
 IMAGE_SPEC = $(IMAGE_NAME):$(IMAGE_VERSION)
 START_SCRIPT = ${HOME}/bin/d_$(IMAGE_NAME)
@@ -39,6 +39,7 @@ $(START_SCRIPT):
 		--volume ${HOME}/dat:/home/$(USERNAME)/dat \
 		--volume /tmp/.X11-unix:/tmp/.X11-unix \
 		--device /dev/snd \
-		$(IMAGE_SPEC)
+		$(IMAGE_SPEC) \
+		$$@
 	)
 	chmod +x $(START_SCRIPT)

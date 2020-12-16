@@ -3,7 +3,7 @@
 
 .PHONY: build run xauth
 
-IMAGE_NAME = $(shell echo ubuntu_firefox)
+IMAGE_NAME = $(shell basename `pwd`)
 IMAGE_VERSION = $(shell echo 0.0.0)
 IMAGE_SPEC = $(IMAGE_NAME):$(IMAGE_VERSION)
 
@@ -17,7 +17,8 @@ run:
 		 --name $(IMAGE_NAME) \
 		 --env DISPLAY=unix$$DISPLAY \
 		 --volume /tmp/.X11-unix:/tmp/.X11-unix \
-		 $(IMAGE_SPEC)
+		 $(IMAGE_SPEC) \
+		 $$@
 
 xauth:
 	xauth + local:docker
