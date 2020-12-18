@@ -30,7 +30,7 @@ $(START_SCRIPT):
 		--env DISPLAY \
 		--volume `pwd`:/home/$(USERNAME)/$$(basename `pwd`) \
 		--volume ${HOME}/dat:/home/$(USERNAME)/dat \
-		--volume /tmp/.X11-unix:/tmp/.X11-unix \
+		--volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
 		--device /dev/snd \
 		$(IMAGE_SPEC) \
 		$$@

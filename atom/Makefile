@@ -23,7 +23,7 @@ $(START_SCRIPT):
 	    --name $(IMAGE_NAME) \
 	    --hostname $(IMAGE_NAME) \
 	    --env DISPLAY \
-	    --volume /tmp/.X11-unix/:/tmp/.X11-unix/ \
+	    --volume /tmp/.X11-unix/:/tmp/.X11-unix/:ro \
 	    --volume /dev/shm:/dev/shm \
 	    --volume ${HOME}:/home/atom \
 	    --volume `pwd`:/home/normaluser/$(shell basename `pwd`) \
