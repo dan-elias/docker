@@ -10,17 +10,18 @@ IMAGE_SPEC = $(IMAGE_NAME):$(IMAGE_VERSION)
 build: Dockerfile
 	docker build --tag $(IMAGE_SPEC) --tag $(IMAGE_NAME):latest .
 
-
 xauth:
 	xauth + local:docker
 
-
 run:
-	 docker run \
-		 --rm \
-		 --detach \
-		 --name $(IMAGE_NAME) \
-		 --env DISPLAY=unix$$DISPLAY \
-		 --volume /tmp/.X11-unix:/tmp/.X11-unix \
-		 $(IMAGE_SPEC) \
-	 	 $$@
+	docker run \
+		--rm \
+		--detach \
+		--name $(IMAGE_NAME) \
+		--hostname $(IMAGE_NAME) \
+		--env DISPLAY \
+		--volume /tmp/.X11-unix:/tmp/.X11-unix \
+		--volume $$XAUTHORITY:/root/.Xauthority \
+		$(IMAGE_SPEC) 
+
+

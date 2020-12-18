@@ -15,10 +15,10 @@ run:
 		 --rm \
 		 --detach \
 		 --name $(IMAGE_NAME) \
-		 --env DISPLAY=unix$$DISPLAY \
+		 --hostname $(IMAGE_NAME) \
+		 --env DISPLAY \
 		 --volume /tmp/.X11-unix:/tmp/.X11-unix \
-		 $(IMAGE_SPEC) \
-		 $$@
+		 $(IMAGE_SPEC)
 
 xauth:
 	xauth + local:docker

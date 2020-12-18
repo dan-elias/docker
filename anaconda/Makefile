@@ -9,22 +9,14 @@ IMAGE_SPEC = $(IMAGE_NAME):$(IMAGE_VERSION)
 START_SCRIPT = ${HOME}/bin/d_$(IMAGE_NAME)
 USERNAME = normaluser
 
-
 build: Dockerfile
 	docker build --tag $(IMAGE_SPEC) --tag $(IMAGE_NAME):latest .
-
-
-xauth:
-	xauth + local:docker
-
 
 run:
 	$(MAKE) $(START_SCRIPT)
 	$(START_SCRIPT)
 
-
 start-script: $(START_SCRIPT) ;
-
 
 $(START_SCRIPT):
 	$(file >$(START_SCRIPT),
@@ -34,7 +26,8 @@ $(START_SCRIPT):
 		--rm \
 		--detach \
 		--name $(IMAGE_NAME) \
-		--env DISPLAY=unix$$DISPLAY \
+		--hostname $(IMAGE_NAME) \
+		--env DISPLAY \
 		--volume `pwd`:/home/$(USERNAME)/$$(basename `pwd`) \
 		--volume ${HOME}/dat:/home/$(USERNAME)/dat \
 		--volume /tmp/.X11-unix:/tmp/.X11-unix \

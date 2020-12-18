@@ -1,7 +1,7 @@
 
 .ONESHELL:
 
-.PHONY: build run xauth
+.PHONY: build run 
 
 IMAGE_NAME = $(shell basename `pwd`)
 IMAGE_VERSION = $(shell echo 0.0.0)
@@ -15,11 +15,8 @@ run:
 		 --rm \
 		 --detach \
 		 --name $(IMAGE_NAME) \
-		 --env DISPLAY=unix$$DISPLAY \
+		 --hostname $(IMAGE_NAME) \
+		 --env DISPLAY \
 		 --volume /tmp/.X11-unix:/tmp/.X11-unix \
-		 $(IMAGE_SPEC) \
-		 $$@
-
-xauth:
-	xauth + local:docker
+		 $(IMAGE_SPEC) 
 

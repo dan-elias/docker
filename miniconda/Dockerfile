@@ -12,4 +12,4 @@ RUN conda install -y -c conda-forge jupyterlab
 USER normaluser
 WORKDIR /home/normaluser
 
-CMD jupyter lab --ip=0.0.0.0
+CMD jupyter notebook --ip=0.0.0.0
