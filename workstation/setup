@@ -1,0 +1,41 @@
+#!/bin/bash
+
+
+# docker
+# ref: https://docs.docker.com/engine/install/ubuntu/
+sudo apt-get --yes install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get update
+sudo apt-get --yes install \
+    docker-ce \
+    docker-ce-cli \
+    containerd.io
+# permissioning for docker
+# ref: https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket
+sudo groupadd docker
+sudo usermod -aG docker ${USER}
+
+# misc essentials
+sudo apt-get --yes install \
+    vim \
+    build-essential
+
+# git
+sudo apt-get install --yes git
+git config --global credential.helper store
+
+# Other steps
+cat << EOF
+Other steps:
+    * If necessary, install Mediatek wifi driver using *install_mediatek_driver* script
+    * Log out & back in before trying docker (eg: "docker ps")
+EOF

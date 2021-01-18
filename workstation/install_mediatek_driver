@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# driver for Mediatek MT7630E 802.11bgn Wi-fi Adapter 
+# ref: https://askubuntu.com/questions/377050/how-do-i-get-mediatek-mt7630e-802-11bgn-wi-fi-adapter-working
+mkdir -p ~/junk
+cd ~/junk
+git clone https://github.com/neurobin/MT7630E.git
+cd MT7630E/
+chmod +x install test uninstall
+sudo ./install
+
