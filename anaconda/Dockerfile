@@ -5,9 +5,10 @@ RUN useradd -ms /bin/bash normaluser \
 
 RUN apt-get -y update && apt-get -y install xauth
 
-RUN apt-get -y install firefox-esr 
-
-# EXPOSE 8888
+RUN apt-get -y install \
+        firefox-esr \
+        libcanberra-gtk-module \
+        libcanberra-gtk3-module
 
 USER normaluser
 WORKDIR /home/normaluser
