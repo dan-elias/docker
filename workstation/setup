@@ -27,7 +27,8 @@ sudo usermod -aG docker ${USER}
 # misc essentials
 sudo apt-get --yes install \
     vim \
-    build-essential
+    build-essential \
+    tree
 
 # git
 sudo apt-get install --yes git

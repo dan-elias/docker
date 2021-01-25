@@ -1,0 +1,27 @@
+# Generic build procedure
+# requires:
+#  * Dockerfile
+#  * working directory with the name required for the image
+#
+# Allows:
+#  * dockerfile to be specified using DOCKERFILE
+#
+# TODO: allow specification of image version
+
+.ONESHELL:
+
+.PHONY: build xauth
+
+IMAGE_NAME ?= $(shell basename `pwd`)
+IMAGE_VERSION ?= $(shell echo 0.0.0)
+IMAGE_SPEC ?= $(IMAGE_NAME):$(IMAGE_VERSION)
+DOCKERFILE ?= Dockerfile
+
+build: $(DOCKERFILE)
+	docker build --tag $(IMAGE_SPEC) --tag $(IMAGE_NAME):latest --file $(DOCKERFILE) .
+
+xauth:
+	xauth + local:docker
+
+FORCE:
+
