@@ -1,13 +1,15 @@
 DOCKERFILE = _build/Dockerfile
+DISTRO = debian/latest
+include ../include/generic/common.make
 
 $(DOCKERFILE): FORCE
 	mkdir -p `dirname $(DOCKERFILE)`
 	cat \
-		src/dockerfile_header \
-		../lib/dockerfile/x11_debian \
-		../lib/dockerfile/normaluser_debian \
-		src/dockerfile_footer \
+		include/header.docker \
+		$(INCLUDE)/firefox.docker \
+		$(INCLUDE)/x11.docker \
+		$(INCLUDE)/normaluser.docker \
+		include/footer.docker \
 	> $(DOCKERFILE)
 
-include ../lib/makefile/build
-include ../lib/makefile/run_debian_gui
+include $(INCLUDE)/run_x11.make

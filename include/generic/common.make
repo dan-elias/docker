@@ -2,6 +2,7 @@
 # requires:
 #  * Dockerfile
 #  * working directory with the name required for the image
+#  * distro inclusion subfolder (eg: "alpine/latest") specified in DISTRO
 #
 # Allows:
 #  * dockerfile to be specified using DOCKERFILE
@@ -16,6 +17,8 @@ IMAGE_NAME ?= $(shell basename `pwd`)
 IMAGE_VERSION ?= $(shell echo 0.0.0)
 IMAGE_SPEC ?= $(IMAGE_NAME):$(IMAGE_VERSION)
 DOCKERFILE ?= Dockerfile
+INCLUDE ?= ../include/$(DISTRO)
+
 
 build: $(DOCKERFILE)
 	docker build --tag $(IMAGE_SPEC) --tag $(IMAGE_NAME):latest --file $(DOCKERFILE) .
