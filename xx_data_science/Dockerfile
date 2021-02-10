@@ -42,4 +42,3 @@ USER normaluser
 RUN conda init --all &&\
     jupyter notebook --generate-config
 
-COPY user_homedir/ /home/normaluser

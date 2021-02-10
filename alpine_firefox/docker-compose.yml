@@ -1,0 +1,10 @@
+services:
+    alpine_firefox:
+        container_name: alpine_firefox
+        build: .
+        environment:
+            - DISPLAY
+        volumes:
+            - /tmp/.X11-unix:/tmp/.X11-unix:ro
+            - ${XAUTHORITY}:/root/.Xauthority:ro
+

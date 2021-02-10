@@ -1,15 +1,16 @@
 FROM alpine:latest
 
-RUN apk --no-cache --update add dbus-x11
+COPY _build/setup/ /setup
+WORKDIR /setup/scripts
 
-RUN apk --no-cache --update add firefox-esr ttf-ubuntu-font-family
-
-RUN apk --no-cache add libcanberra-gtk-module libcanberra-gtk3-module
-
-RUN adduser -D normaluser \
- && echo "normaluser:normaluser" | chpasswd
+RUN cd `./get_distro` \
+    && ./update_installer \
+    && ./install_x11 \
+    && ./install_firefox \
+    && ./set_up_normaluser \
+    && cd / && rm -r setup
 
 USER normaluser
 WORKDIR /home/normaluser
-
+ 
 CMD firefox

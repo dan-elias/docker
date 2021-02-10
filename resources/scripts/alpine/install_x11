@@ -1,0 +1,1 @@
+apk --no-cache --update add dbus-x11

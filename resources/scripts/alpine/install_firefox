@@ -1,0 +1,4 @@
+apk --no-cache --update add \
+    firefox-esr \
+    ttf-ubuntu-font-family \
+    libcanberra-gtk3

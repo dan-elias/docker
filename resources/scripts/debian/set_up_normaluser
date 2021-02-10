@@ -1,0 +1,2 @@
+useradd -ms /bin/bash normaluser \
+ && echo "normaluser:normaluser" | chpasswd

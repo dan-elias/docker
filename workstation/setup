@@ -18,7 +18,7 @@ sudo apt-get update
 sudo apt-get --yes install \
     docker-ce \
     docker-ce-cli \
-    containerd.io
+    containerd.io 
 # permissioning for docker
 # ref: https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket
 sudo groupadd docker
@@ -26,8 +26,7 @@ sudo usermod -aG docker ${USER}
 
 # misc essentials
 sudo apt-get --yes install \
-    vim \
-    build-essential
+    vim 
 
 # git
 sudo apt-get install --yes git
@@ -38,5 +37,6 @@ git config --global core.editor vim
 cat << EOF
 Other steps:
     * If necessary, install Mediatek wifi driver using *install_mediatek_driver* script
+    * Install the latest versin of docker-compose (example instructions here: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04)
     * Log out & back in before trying docker (eg: "docker ps")
 EOF
