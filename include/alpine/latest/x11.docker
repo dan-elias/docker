@@ -1,4 +1,0 @@
-
-# Add X11 to Alpine
-RUN apk --no-cache --update add dbus-x11
-

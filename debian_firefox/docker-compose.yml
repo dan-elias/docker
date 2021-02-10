@@ -1,0 +1,8 @@
+services:
+        debian_firefox:
+                build: .
+                environment:
+                        - DISPLAY
+                volumes:
+                        - /tmp/.X11-unix:/tmp/.X11-unix:ro
+

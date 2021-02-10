@@ -1,4 +1,0 @@
-
-# Add x11 to Debian
-RUN apt-get -y update && apt-get -y install xauth
-

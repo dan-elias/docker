@@ -1,6 +1,0 @@
-
-RUN useradd -ms /bin/bash normaluser \
- && echo "normaluser:normaluser" | chpasswd
-
-USER normaluser
-WORKDIR /home/normaluser

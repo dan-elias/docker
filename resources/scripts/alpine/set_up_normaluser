@@ -1,0 +1,2 @@
+adduser -D normaluser \
+    && echo "normaluser:normaluser" | chpasswd

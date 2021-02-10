@@ -1,4 +1,0 @@
-
-# Install firefox
-RUN apk --no-cache --update add firefox-esr ttf-ubuntu-font-family
-

@@ -1,8 +1,0 @@
-
-# Add and switch to a non-root user
-RUN adduser -D normaluser \
- && echo "normaluser:normaluser" | chpasswd
-
-USER normaluser
-WORKDIR /home/normaluser
-
