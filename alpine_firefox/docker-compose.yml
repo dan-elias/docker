@@ -1,5 +1,5 @@
 services:
-    alpine_firefox:
+    main:
         container_name: alpine_firefox
         build: .
         environment:

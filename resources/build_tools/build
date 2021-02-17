@@ -1,0 +1,18 @@
+#!/bin/bash
+
+rm -rf _build
+mkdir -p _build/setup
+cp -rL $(dirname $(readlink -f build))/* _build/setup
+if [ -d setup ]; then
+    cp -rL setup _build
+fi
+if [ -f docker-compose.yml ]; then
+    docker-compose build
+else
+    name=$(basename $(pwd))
+    build_opts="--tag $name:latest"
+    if [ -f VERSION ]; then
+        build_opts="$build_opts --tag $name:$(cat VERSION | sed 's/^[ \t]+//g' | sed 's/[ \t]$//g' | grep .)"
+    fi
+    docker build $build_opts .
+fi

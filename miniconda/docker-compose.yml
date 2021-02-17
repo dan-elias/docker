@@ -1,8 +1,8 @@
 services:
-        miniconda:
-                build: .
-                environment:
-                        - DISPLAY
-                volumes:
-                        - /tmp/.X11-unix:/tmp/.X11-unix:ro
+    main:
+        build: .
+        environment:
+            - DISPLAY
+        volumes:
+            - /tmp/.X11-unix:/tmp/.X11-unix:ro
 
