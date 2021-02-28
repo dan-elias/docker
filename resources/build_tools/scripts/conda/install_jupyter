@@ -1,3 +1,18 @@
 conda install -y -c conda-forge \
     jupyterlab \
-    nodejs
+    nodejs \
+    nbstripout \
+    pandas 
+
+conda install -y -c conda-forge \
+    ipywidgets
+
+pip install qgrid
+
+jupyter nbextension enable --py --sys-prefix qgrid
+jupyter nbextension enable --py --sys-prefix widgetsnbextension
+
+# Disabled Feb-2021 - qgrid doesn't work with latest version of Jupyterlab
+#jupyter labextension install @jupyter-widgets/jupyterlab-manager
+#jupyter labextension enable qgrid2
+

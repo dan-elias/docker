@@ -1,4 +1,4 @@
 #!/bin/bash
 
 name=$(basename $(pwd))
-docker run --rm --detach $(../resources/run/x11_opts) $name
+docker run --rm --detach $(../resources/run/x11_opts) --volume `pwd`/project:/home/normaluser/project $name

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+name=$(basename $(pwd))
+docker run --rm -it --user root --volume `pwd`/project:/home/normaluser/project $name bash
