@@ -1,0 +1,11 @@
+name: base
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - kaggle
+  - scikit-learn
+  - numpy
+  - pandas 
+#  - pip:
+#    - qgrid==1.3.1

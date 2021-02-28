@@ -13,6 +13,8 @@ RUN . ./cd_distro \
         && ./set_up_normaluser \
     && cd /setup/scripts/conda \
         && ./install_jupyter \
+    && cd /setup \
+        && conda env update -f environment.yml \
     && cd / \
         && rm -r setup
 
