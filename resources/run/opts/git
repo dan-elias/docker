@@ -1,0 +1,2 @@
+--volume ~/.gitconfig:/home/normaluser/.gitconfig:ro
+--volume ~/.git-credentials:/home/normaluser/.gitcredentials:ro

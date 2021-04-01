@@ -1,0 +1,1 @@
+--volume ~/.kaggle:/home/normaluser/.kaggle:ro

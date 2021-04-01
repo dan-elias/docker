@@ -2,7 +2,7 @@
 
 rm -rf _build
 mkdir -p _build/setup
-cp -rL $(dirname $(readlink -f build))/* _build/setup
+cp -rL $(dirname $(readlink -f build))/scripts _build/setup
 if [ -d setup ]; then
     cp -rL setup _build
 fi
@@ -16,3 +16,12 @@ else
     fi
     docker build $build_opts .
 fi
+
+build_output_dir=`pwd`/_build/output
+run_in_container="docker run --volume $build_output_dir:/build_output $(basename $(pwd))"
+for cmd in /usr/local/bin/save_versions ; do
+    if [ -f _build/setup/skel$cmd ] ; then
+        mkdir -p $build_output_dir
+        $run_in_container $cmd
+    fi
+done

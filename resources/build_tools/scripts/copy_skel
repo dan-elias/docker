@@ -1,0 +1,7 @@
+skel_dir=/setup/skel
+
+if [ -d $skel_dir ]; then
+    for x in `ls -A $skel_dir`; do
+        cp -r $skel_dir/$x /
+    done
+fi

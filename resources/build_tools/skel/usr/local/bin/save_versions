@@ -1,0 +1,20 @@
+#!/bin/bash
+
+dest=${1:-/build_output/_versions}
+rm -rf $dest
+mkdir -p $dest
+versions_dest=$dest/versions.txt
+rm -f $versions_dest
+for prog in conda firefox gcc git make vim wget
+do
+    if [ "`which $prog`" != "" ]
+    then
+        echo $prog >> $versions_dest
+        $prog --version >> $versions_dest
+        echo ------------------------------------------------------ >> $versions_dest
+        if [ $prog == conda ]
+        then
+            conda env export --name base > $dest/environment.yml
+        fi
+    fi
+done

@@ -13,15 +13,19 @@ RUN . ./cd_distro \
         && ./set_up_normaluser \
     && cd /setup/scripts/conda \
         && ./install_jupyter \
+    && cd /setup/scripts \
+        && ./copy_skel \
     && cd /setup \
-        && conda env update -f environment.yml \
+        && conda env update --name base --file environment.yml \
     && cd / \
-        && rm -r setup
+        && rm -r setup \
+    && echo
 
 ENV SHELL=/bin/bash
 
 USER normaluser
 WORKDIR /home/normaluser
+RUN conda init --all 
 
-#CMD jupyter notebook --ip=0.0.0.0
-CMD jupyter lab --ip=0.0.0.0
+CMD jupyter notebook --ip=0.0.0.0
+#CMD jupyter lab --ip=0.0.0.0

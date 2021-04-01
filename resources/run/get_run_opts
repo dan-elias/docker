@@ -1,0 +1,9 @@
+#!/bin/bash
+
+opts_root=$(dirname $(realpath $0))/opts
+for pkg in $@
+do
+    raw_opts=$(cat $opts_root/$pkg)
+    expanded_opts=`eval echo -e $raw_opts`
+    echo -n " " $expanded_opts
+done

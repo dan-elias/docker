@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo --env DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix:ro
-
