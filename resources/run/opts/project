@@ -1,0 +1,1 @@
+--volume `pwd`/project:/home/normaluser/project

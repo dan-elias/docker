@@ -1,4 +1,8 @@
 #!/bin/bash
 
+if [ $# -gt 0 ]; then
+    additional_opts="--volume `pwd`/_build/output:/build_output"
+fi
+
 name=$(basename $(pwd))
-docker run --rm --detach $(../resources/run/get_run_opts x11 git) --volume `pwd`/project:/home/normaluser/project $name
+docker run --rm --detach $(../resources/run/get_run_opts x11 git shm-1g project)  $additional_opts $name $@

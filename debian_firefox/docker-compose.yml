@@ -1,8 +1,8 @@
 services:
     main:
         build: .
+        shm_size: '1gb'
         environment:
             - DISPLAY
         volumes:
             - /tmp/.X11-unix:/tmp/.X11-unix:ro
-

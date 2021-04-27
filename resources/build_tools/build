@@ -9,19 +9,18 @@ fi
 if [ -f docker-compose.yml ]; then
     docker-compose build
 else
-    name=$(basename $(pwd))
-    build_opts="--tag $name:latest"
+    image_name=$(basename `pwd`)
+    build_opts="--tag $image_name:latest"
     if [ -f VERSION ]; then
-        build_opts="$build_opts --tag $name:$(cat VERSION | sed 's/^[ \t]+//g' | sed 's/[ \t]$//g' | grep .)"
+        build_opts="$build_opts --tag $image_name:$(cat VERSION | sed 's/^[ \t]+//g' | sed 's/[ \t]$//g' | grep .)"
     fi
     docker build $build_opts .
 fi
 
 build_output_dir=`pwd`/_build/output
-run_in_container="docker run --volume $build_output_dir:/build_output $(basename $(pwd))"
-for cmd in /usr/local/bin/save_versions ; do
+for cmd in /usr/local/bin/save_versions /usr/local/bin/save_sysinfo ; do
     if [ -f _build/setup/skel$cmd ] ; then
         mkdir -p $build_output_dir
-        $run_in_container $cmd
+        ./run $cmd
     fi
 done

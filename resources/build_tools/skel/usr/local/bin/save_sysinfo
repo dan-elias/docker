@@ -1,0 +1,10 @@
+#!/bin/bash
+
+dest=${1:-/build_output/_sysinfo}
+rm -rf $dest
+mkdir -p $dest
+for command in 'uname -a' 'df -h' lscpu lsblk
+do
+    $command > $dest/${command%% *}.txt
+done
+

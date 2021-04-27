@@ -1,7 +1,7 @@
 services:
     main:
-        container_name: alpine_firefox
         build: .
+        shm_size: '1gb'
         environment:
             - DISPLAY
         volumes:

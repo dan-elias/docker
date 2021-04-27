@@ -1,1 +1,2 @@
 --volume ~/.openml:/home/normaluser/.openml:ro
+--volume ~/cache/openml:/home/normaluser/cache/openml:rw
