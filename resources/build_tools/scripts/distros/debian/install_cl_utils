@@ -1,4 +1,5 @@
 apt-get install -y \
     tmux \
     tree \
-    vim
+    vim \
+    zip unzip
