@@ -1,2 +1,7 @@
+# local
 _build/
+
+# Python
 .ipynb_checkpoints/
+__pycache__/
+*.py[cod]
