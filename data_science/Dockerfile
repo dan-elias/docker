@@ -10,6 +10,7 @@ RUN . ./cd_distro \
         && ./install_build_essential \
         && ./install_firefox \
         && ./install_git \
+        && ./install_graphviz \
         && ./set_up_normaluser \
     && cd /setup/scripts/conda \
         && ./install_jupyter \
