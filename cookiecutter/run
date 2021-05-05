@@ -1,0 +1,10 @@
+#!/bin/bash
+
+name=$(basename $(pwd))
+
+docker run \
+    --rm \
+    -i -t \
+    --volume `pwd`/_build/output:/build_output \
+    $name \
+    $@

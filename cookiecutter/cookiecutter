@@ -1,0 +1,9 @@
+#!/bin/bash
+
+docker run \
+    --rm \
+    -i -t  \
+    --volume `pwd`:/home/normaluser/work \
+    --workdir="/home/normaluser/work" \
+    cookiecutter:latest \
+    cookiecutter $@
