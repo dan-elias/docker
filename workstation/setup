@@ -1,5 +1,11 @@
 #!/bin/bash
 
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+skel_home=$script_dir/skel_home
+for x in `ls -A $skel_home`
+do
+    cp -r $skel_home/$x ~/
+done
 
 # docker
 # ref: https://docs.docker.com/engine/install/ubuntu/
